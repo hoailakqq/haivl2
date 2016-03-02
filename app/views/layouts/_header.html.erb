@@ -14,13 +14,16 @@
       
     </div>
     
-    
+      
       <%if user_signed_in?%>
       <li ><%= link_to 'dangxuat',destroy_user_session_path, method: :delete, class: "btn btn-warning navbar-btn navbar-right" %></li>
-      <%= link_to 'Hello'+ current_user.email,edit_user_registration_path, class: "nav navbar-btn btn btn-info navbar-right" %>           
+      <li ><%= link_to 'Hello'+ current_user.email,edit_user_registration_path, class: "nav navbar-btn btn btn-info navbar-right" %> </li> 
+      <li ><%= link_to 'dang bai',new_article_path, class: "nav navbar-btn btn btn-info navbar-right" %>  </li>     
       <% else %>
       <li ><%= link_to 'dangnhap',new_user_session_path, class: "btn btn-success navbar-btn navbar-right" %></li>
       <li ><%= link_to 'dangky',new_user_registration_path, class: "btn btn-success navbar-btn navbar-right" %></li>
+      <li ><%= link_to 'dang bai',new_article_path, class: "nav navbar-btn btn btn-info navbar-right" %>  </li>     
+
       <% end %>
       
     </ul>

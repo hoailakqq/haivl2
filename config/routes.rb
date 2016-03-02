@@ -1,6 +1,7 @@
 Rails.application.routes.draw do
   devise_for :users
   root 'homes#latest'
+  resources :articles
   #get 'homes/latest'
 
   #get 'homes/hot'
