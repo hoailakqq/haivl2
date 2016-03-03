@@ -15,18 +15,23 @@
     </div>
     
       
+    
       <%if user_signed_in?%>
-      <li ><%= link_to 'dangxuat',destroy_user_session_path, method: :delete, class: "btn btn-warning navbar-btn navbar-right" %></li>
-      <li ><%= link_to 'Hello'+ current_user.email,edit_user_registration_path, class: "nav navbar-btn btn btn-info navbar-right" %> </li> 
-      <li ><%= link_to 'dang bai',new_article_path, class: "nav navbar-btn btn btn-info navbar-right" %>  </li>     
+        <div class="btn navbar-btn navbar-right">
+        
+          <%= link_to "Hello : " + current_user.email,edit_user_registration_path,class: "btn btn-success"%><br/> 
+          <%= link_to 'Sign out',destroy_user_session_path, method: :delete,class: "btn-danger" %>
+          <%= link_to 'Post Article',new_article_path,class: "btn-info"%>
+        </div>
       <% else %>
-      <li ><%= link_to 'dangnhap',new_user_session_path, class: "btn btn-success navbar-btn navbar-right" %></li>
-      <li ><%= link_to 'dangky',new_user_registration_path, class: "btn btn-success navbar-btn navbar-right" %></li>
-      <li ><%= link_to 'dang bai',new_article_path, class: "nav navbar-btn btn btn-info navbar-right" %>  </li>     
-
+        <div class="btn navbar-btn navbar-right">
+          <%= link_to 'Post Article',new_article_path,class: "btn btn-info"%>
+          <%= link_to 'Sign in',new_user_session_path, class: "btn btn-success " %>
+          <%= link_to 'Sign up',new_user_registration_path, class: "btn btn-primary" %>
+             
+        </div>  
       <% end %>
-      
-    </ul>
+    
         
   </div>
 
