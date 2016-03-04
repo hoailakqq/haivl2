@@ -1,8 +1,10 @@
 Rails.application.routes.draw do
   devise_for :users
   root 'homes#latest'
-  resources :articles
+  resources :articles do
     resource :comments
+  end
+  resources :my_articles
   #get 'homes/latest'
 
   #get 'homes/hot'

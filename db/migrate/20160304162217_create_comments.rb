@@ -1,8 +1,8 @@
-class CreateArticles < ActiveRecord::Migration
+class CreateComments < ActiveRecord::Migration
   def change
-    create_table :articles do |t|
+    create_table :comments do |t|
       t.integer :user_id
-      t.string :title
+      t.integer :article_id
       t.text :content
 
       t.timestamps null: false

@@ -23,7 +23,7 @@
           <%= link_to 'Sign out',destroy_user_session_path, method: :delete,class: "btn-danger" %>
           <%= link_to 'Post Article',new_article_path,class: "btn-info"%>
 
-          <%= link_to 'Your Post',render='articles/edit',class: "btn-warning"%>
+          <%= link_to 'Your Post',my_articles_path,class: "btn-warning"%>
         </div>
       <% else %>
         <div class="btn navbar-btn navbar-right">

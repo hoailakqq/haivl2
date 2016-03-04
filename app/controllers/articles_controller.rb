@@ -1,49 +1,48 @@
 class ArticlesController < ApplicationController
+  before_action :check_user_signed_in, except: [:show]
+
   def new
-    @article = Article.new(params[:id])
-    @user = User.all
+    @article = Article.new
   end
 
   def create
-    @article = Article.new(params.require(:article).permit(:title, :content))
+    @article = Article.new(article_params)
     @article.user = current_user
+
     if @article.save
-      redirect_to root_path
+      redirect_to @article, notice: 'Đăng bài thành công'
     else
       render :new
-      @user = User.all
     end
   end
 
-  def edit
-    @articles = Article.find(params[:id])
-    @user = User.all
-  end
-    
   def show
-    @article = user.Article.find(params[:id])
-    
+    @article = Article.find(params[:id])
+    @comment = Comment.new
+    @comments = @article.comments.order(created_at: :desc)
+  end
+
+  def edit
+    @article = Article.find(params[:id])
   end
 
   def update
-    @article = Article.find(params[:id])  
-    if @article.update(params.require(:article).permit(:title, :content))
-      redirect_to root_path
+    @article = Article.find(params[:id])
+    if @article.update(article_params)
+      redirect_to @article, notice: 'Sửa bài thành công'
     else
       render :edit
-      redirect_to :action => 'show', :id => @book
     end
   end
 
   def destroy
-    @articles = Article.find(params[:id]).destroy
+    article = Article.find(params[:id])
+    article.destroy
+
+    redirect_to my_articles_path
   end
 
   def article_params
-    params.require(:article).permit(:title, :content, :user_id)    
-  end
-
-  def show_users
-    @user = User..find(params[:id])
+    params.require(:article).permit(:title, :content)
   end
 end
