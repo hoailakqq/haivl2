@@ -10,23 +10,58 @@
       Content
     </td>
     <td colspan = "3 "></tr>
-<% @articles.each do |f| %>
+<% if user_signed_in? %> 
 
-  <tr>
-    <td>
-    </td>
-    <td>
-      <%= f.title %>
-    </td>
-    <td>
-      <%= truncate(f.content, length: 50)%>
-    </td>
-    <td>
-      <%= link_to "show",article_path(f)%>
-    </td>
-    <td>
-      <%= link_to "edit",edit_article_path(f)%>
-    </td>
+  <% @articles.each do |f| %>
 
-<% end %>
+    <tr>
+      <td>
+        <%=f.user.email%>
+      </td>
+      <td>
+        <%= f.title %>
+      </td>
+      <td>
+        <%= truncate(f.content, length: 50)%>
+      </td>
+      <td>
+        <%= link_to "show",article_path(f)%>
+      </td>
+
+      <td>
+      <% if current_user.id == f.user.id %>
+        <%= link_to 'Edit', edit_article_path(f) %>
+      <% end %>
+      </td>
+      <td>
+        
+      </td>
+  <% end %>   
+<% else %>
+  <% @articles.each do |f| %>
+
+    <tr>
+      <td>
+        <%=f.user.email%>
+      </td>
+      <td>
+        <%= f.title %>
+      </td>
+      <td>
+        <%= truncate(f.content, length: 50)%>
+      </td>
+      <td>
+        <%= link_to "show",article_path(f)%>
+      </td>
+
+      <td>
+      
+      </td>
+      <td>
+        
+      </td>
+  <% end %> 
+<% end %> 
+
+
 </table>

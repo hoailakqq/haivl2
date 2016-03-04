@@ -2,6 +2,7 @@ Rails.application.routes.draw do
   devise_for :users
   root 'homes#latest'
   resources :articles
+    resource :comments
   #get 'homes/latest'
 
   #get 'homes/hot'
