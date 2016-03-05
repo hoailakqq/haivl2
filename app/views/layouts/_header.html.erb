@@ -1,29 +1,32 @@
-<nav class="navbar navbar-inverse">
+<nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
   <div class="container">
     <div class="navbar-header">
-      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
-        <span class="sr-only">Toggle navigation</span>
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapsed" data-target="#main-menu">
+        <span class="sr-only">Toggle navigationb</span>
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
+        <span class="icon-bar">
+        </span>
       </button>
-      <%= link_to root_path do %>
-        <%= image_tag('yao-ming.jpg', width: '150', height: '150') %>
-      <% end %> 
-
-      
+        <%= link_to image_tag("haivl.jpg", width: '100', height: '100'), root_path ,{ class: "navbar-brand" }%>
     </div>
-    
-      
-    
-      <%if user_signed_in?%>
-        <div class="btn navbar-btn navbar-right">
+    <div class="collapse navbar-collapse" id="mai n-menu">
+        <ul  class="nav navbar-nav">
+        <li><a href="#">Recently</a></li>
+        <li><a href="#">Oldest</a></li>
         
-          <%= link_to "Hello : " + current_user.email,edit_user_registration_path,class: "btn btn-success"%><br/> 
-          <%= link_to 'Sign out',destroy_user_session_path, method: :delete,class: "btn-danger" %>
-          <%= link_to 'Post Article',new_article_path,class: "btn-info"%>
+        
+        <li><%= link_to 'Your Post',my_articles_path %></li>
+        </ul>
+    
+    <%if user_signed_in?%>
+        <div class="btn navbar-btn navbar-right">
+          <%= link_to 'Post Article',new_article_path,class: "btn btn-info"%>
+          <%= link_to "Hello : " + current_user.email,edit_user_registration_path,class: "btn btn-success"%>
+          <%= link_to 'Sign out',destroy_user_session_path, method: :delete,class: "btn btn-danger" %>
+          
 
-          <%= link_to 'Your Post',my_articles_path,class: "btn-warning"%>
+          
         </div>
       <% else %>
         <div class="btn navbar-btn navbar-right">
@@ -32,9 +35,11 @@
           <%= link_to 'Sign up',new_user_registration_path, class: "btn btn-primary" %>
              
         </div>  
-      <% end %>
-    
-        
-  </div>
-
+      <% end %>  
+       
+    </div>
 </nav>
+      
+      
+    
+    
