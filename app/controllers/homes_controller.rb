@@ -1,6 +1,7 @@
 class HomesController < ApplicationController
   def latest
-    @articles = Article.order('created_at DESC').limit(5)
+    @articles = Article.order('created_at DESC').page(params[:page])
+    
   end
 
   def hot

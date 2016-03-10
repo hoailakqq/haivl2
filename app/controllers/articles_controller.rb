@@ -19,7 +19,7 @@ class ArticlesController < ApplicationController
   def show
     @article = Article.find(params[:id])
     @comment = Comment.new
-    @comments = @article.comments.order(created_at: :desc)
+    @comments = @article.comments.order(created_at: :desc).page(params[:page])
   end
 
   def edit
@@ -42,7 +42,11 @@ class ArticlesController < ApplicationController
     redirect_to my_articles_path
   end
 
+  def index
+    @articles = Article.order(created_at: :desc).page(params[:page])
+  end
+
   def article_params
-    params.require(:article).permit(:title, :content)
+    params.require(:article).permit(:title, :content, :image)
   end
 end

@@ -1,0 +1,30 @@
+
+<% if user_signed_in? %> 
+  <% @articles.each do |article| %>
+    <label class="control-label col-sm-3" for="inputSuccess3">
+      <%= article.title %>
+    </label><br/>
+
+    <span id="helpBlock" class="help-block">
+      <%= truncate(article.content, length: 50)%>
+    </span>
+    <%= link_to "show",article_path(article)%>
+    <% if current_user.id == article.user.id %>
+      <%= link_to 'Edit', edit_article_path(article) %>
+      Đăng bởi <%= article.user.email %>, Cách đây <%= time_ago_in_words(article.created_at) %>
+      <br/>
+    <% end %>
+  <% end %>
+<% else %>
+  <% @articles.each do |f| %>
+    <label class="control-label col-sm-3" for="inputSuccess3">
+      <%= f.title %>
+    </label><br/>
+
+    <span id="helpBlock" class="help-block">
+      <%= truncate(f.content, length: 50)%>
+    </span>
+    <%= link_to "show",article_path(f)%><br/>
+  <% end %>
+<% end %>
+<%= paginate @articles %>
