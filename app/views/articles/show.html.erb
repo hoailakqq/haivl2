@@ -4,7 +4,8 @@
 <div class="article-content">
 	<p class="panel panel-info">
 	<%= image_tag @article.image.url(:large) %><br/>
-    <%=@article.content %>
+  <%=@article.content %>
+  <%= render 'articles/vote_buttons', article: @article %>
     
   </p>
 </div>
@@ -18,8 +19,10 @@
 	<div class="comment-form">
 		<%= form_for [@article, @comment] do |f| %>
 			<%= f.text_area :content, placeholder: 'Bình luận của bạn', size:'72.5x2' %>
+	
 			<%= f.submit 'Lưu' %>
 		<% end %>
+
 	</div>
 <% else %>
 	<p class="btn btn-danger"><%= link_to "Hãy đăng nhập để bình luận", new_user_session_path %></p>
@@ -38,4 +41,3 @@
 		</div>
 	<% end %>
 </div>
-<%= paginate @articles %>

@@ -8,6 +8,11 @@
       <span id="helpBlock" class="help-block">
         <%= truncate(f.content, length: 140)%>
       </span><br/>
+       <div class="col-xs-4">
+        <div class="pull-right">
+        <%= render 'articles/vote_buttons', article: article %>
+        </div>
+       </div>
       Đăng bởi <%= f.user.email %>, Cách đây <%= time_ago_in_words(f.created_at) %>
       <%= link_to "show",article_path(f)%>
       <% if current_user.id == f.user.id %>

@@ -16,3 +16,14 @@
  body{
    padding-top: 50px
  }
+.avatar {
+  background-color: #888;
+}
+
+.avatar.avatar-tiny {
+  border-radius: 4px;
+}
+
+.avatar.avatar-thumb {
+  border-radius: 8px;
+}
