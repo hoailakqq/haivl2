@@ -1,3 +1,7 @@
+<div class="article-stats">
+  <span class="stats-label">Xem:</span> 
+  <%= article.views_count%> lượt
+</div>
 <% if user_signed_in? %> 
   <% @articles.each do |f| %>
     <div class="form-group has-success">
@@ -11,6 +15,7 @@
        <div class="col-xs-4">
         <div class="pull-right">
         <%= render 'articles/vote_buttons', article: article %>
+
         </div>
        </div>
       Đăng bởi <%= f.user.email %>, Cách đây <%= time_ago_in_words(f.created_at) %>

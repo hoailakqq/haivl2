@@ -6,6 +6,8 @@ Rails.application.routes.draw do
     resource :votes
   end
   resources :my_articles
+  resources :high_votes 
+  resources :high_views
   #get 'homes/latest'
 
   #get 'homes/hot'

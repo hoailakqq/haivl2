@@ -1,4 +1,3 @@
-
 <% if user_signed_in? %> 
   <% @articles.each do |f| %>
     <div class="form-group has-success">
@@ -9,11 +8,12 @@
       <span id="helpBlock" class="help-block">
         <%= truncate(f.content, length: 140)%>
       </span><br/>
-       
-      <div class="article-stats">
-        <span class="stats-label">Xem:</span> 
-        <%= f.views_count%> lượt
-      </div>
+       <div class="col-xs-4">
+        <div class="pull-right">
+        
+
+        </div>
+       </div>
       Đăng bởi <%= f.user.email %>, Cách đây <%= time_ago_in_words(f.created_at) %>
       <%= link_to "show",article_path(f)%>
       <% if current_user.id == f.user.id %>
@@ -38,4 +38,3 @@
   </div>
   <% end %>
 <% end %>
-<%= paginate @articles %>
