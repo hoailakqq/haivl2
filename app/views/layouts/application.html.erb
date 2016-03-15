@@ -29,10 +29,17 @@
     <!-- Main jumbotron for a primary marketing message or call to action -->
     <div >
       <div class="row">
-
-        <div class="col-sm-8 blog-main">
+        <div class="col-sm-2 col-sm-offset-1 blog-sidebar" style="margin-left: 100px">
+          <div class="sidebar-module">
+            <h4 class="category">Propose</h4>
+            <ol class="list-unstyled">
+              <%= render 'layouts/left'%>
+              </ol>
+          </div>
+        </div>
+        <div class="col-sm-6 blog-main" style="background-color: #D6FFFF">
           <div class="main">
-            <div class="container">
+            <div class="container" style="width: 100%">
               <div>
               <p class="notice"><%= notice %></p>
               <p class="alert"><%= alert %></p>
@@ -41,13 +48,13 @@
             </div>
           </div>
         </div>
-        <div class="col-sm-3 col-sm-offset-1 blog-sidebar">
+        <div class="col-sm-2 col-sm-offset-1 blog-sidebar" style="margin-right: 65px; margin-left: 10px">
           <div class="sidebar-module sidebar-module-inset">
-            <h4>About</h4>
+            <h4 class="category">About</h4>
             <p>Haivl <em>(thường phát âm là: hài vê-lờ hoặc hài vờ-lờ )</em> là một trong những trang mạng xã hội giải trí phổ biến tại Việt Nam.</p>
           </div>
           <div class="sidebar-module">
-            <h4>Archives</h4>
+            <h4 class="category">Archives</h4>
             <ol class="list-unstyled">
               <li><a href="#">March 2014</a></li>
               <li><a href="#">February 2014</a></li>
@@ -64,7 +71,7 @@
             </ol>
           </div>
           <div class="sidebar-module">
-            <h4>Elsewhere</h4>
+            <h4 class="category">Elsewhere</h4>
             <ol class="list-unstyled">
               <li><a href="#">GitHub</a></li>
               <li><a href="#">Twitter</a></li>

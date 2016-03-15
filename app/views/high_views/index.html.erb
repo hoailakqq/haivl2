@@ -1,40 +1,27 @@
-<% if user_signed_in? %> 
-  <% @articles.each do |f| %>
+<% @articles.each do |f| %>
     <div class="form-group has-success">
-      <label class="control-label col-sm-3" for="inputSuccess3">
-        <%=truncate(f.title, length: 20)%>
-      </label>
-      <%= image_tag f.image.url(:thumb)%>
+      <span class="title">
+        <%= link_to truncate(f.title, length: 20), article_path(f)%>
+      </span>
+      <div>
+      <%= image_tag f.image.url(:large)%>
+      </div>
       <span id="helpBlock" class="help-block">
-        <%= truncate(f.content, length: 140)%>
+        <%= truncate(f.content, length: 300)%>
       </span><br/>
-       <div class="col-xs-4">
-        <div class="pull-right">
-        
-
-        </div>
-       </div>
+       
+      <div class="article-stats">
+        <span class="glyphicon glyphicon-eye-open"></span> 
+        <%= f.views_count%> lượt
+        <%= render 'articles/vote_buttons', article: f %>
+      </div>
+      <br>
       Đăng bởi <%= f.user.email %>, Cách đây <%= time_ago_in_words(f.created_at) %>
       <%= link_to "show",article_path(f)%>
-      <% if current_user.id == f.user.id %>
-        <%= link_to 'Edit', edit_article_path(f) %>
-      <% end %><br/><br/>
+      <% if user_signed_in? %> 
+        <% if current_user.id == f.user.id %>
+          <%= link_to 'Edit', edit_article_path(f) %>
+        <% end %><br/><br/>
+      <% end %>
     </div>
   <% end %>
-<% else %>
-  <% @articles.each do |f| %>
-    <div class="form-group has-success">
-    <label class="control-label col-sm-3" for="inputSuccess3">
-        <%=truncate(f.title, length: 20)%>
-      </label>
-
-    <span id="helpBlock" class="help-block">
-      <%= image_tag f.image.url(:thumb)%>
-      <%= truncate(f.content, length: 140)%>
-    </span><br/>
-    Đăng bởi <%= f.user.email %>, Cách đây <%= time_ago_in_words(f.created_at) %>
-    <%= link_to "show",article_path(f)%>
-    <br/><br/>
-  </div>
-  <% end %>
-<% end %>

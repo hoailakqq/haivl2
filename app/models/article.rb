@@ -12,4 +12,11 @@ class Article < ActiveRecord::Base
   def increase_views_count
     Article.increment_counter(:views_count, self.id)
   end
+  
+  def self.hot_articles
+    joins('LEFT JOIN votes ON votes.article_id = articles.id')
+    .group('articles.id')
+    .order('SUM(votes.value) DESC')
+    
+  end
 end

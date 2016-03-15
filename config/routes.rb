@@ -1,16 +1,16 @@
 Rails.application.routes.draw do
   devise_for :users
-  root 'articles#index'
+  root 'homes#latest'
   resources :articles do
     resources :comments
     resource :votes
   end
   resources :my_articles
-  resources :high_votes 
   resources :high_views
   #get 'homes/latest'
 
-  #get 'homes/hot'
+  get 'homes/hot'
+  get 'homes/oldest'
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

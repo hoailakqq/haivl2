@@ -12,13 +12,22 @@
     </div>
     <div class="collapse navbar-collapse" id="mai n-menu">
         <ul  class="nav navbar-nav">
-        <li><a href="#">Recently</a></li>
-        <li><a href="#">Oldest</a></li>
-        <li><%= link_to high_views_path do %>
-              HightViews
+        <li><%= link_to root_path do %>
+              Recently
             <% end %>
         </li>
-        
+        <li><%= link_to homes_oldest_path do %>
+              Oldest
+            <% end %>
+        </li>
+        <li><%= link_to high_views_path do %>
+              High Views
+            <% end %>
+        </li>
+        <li><%= link_to homes_hot_path do %>
+              High Votes
+            <% end %>
+        </li>
         
         
         <li><%= link_to 'Your Post',my_articles_path %></li>
